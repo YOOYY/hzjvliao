@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>echarts</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <style type="text/css">
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+                background: #d3f3fe;
+                margin: 0;
+            }
+
+            #echarts {
+				width:100%;
+                height: 100%;
+            }
+			#btn{
+				border: none;
+				background-color:#8843f4;
+				border-radius:4px;
+				color:#fff;
+				outline: none;
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				z-index: 1;
+			}
+        </style>
+    </head>
+
+    <body>
+        <div id="echarts"></div>
+		<button type="button" id="btn">重置</button>
+		<script src="./js/jquery.js"></script>
+       <script src="./js/echarts.js"></script>
+        <script src="./js/china.js"></script>
+		<script src="./js/uni.webview.1.5.2.js"></script>
+		<script>
+			let myChart = echarts.init(document.getElementById('echarts'));
+			let btn = document.getElementById('btn');
+			let mapOption = null;
+			btn.addEventListener('click',function(){
+				myChart.setOption(mapOption,true);
+			})
+			document.addEventListener('UniAppJSBridgeReady', function() {
+				$.get("http://data.juliaohz.com/index/maplist",function(res){
+					let {error,data} = JSON.parse(res);
+					if(error === 0){
+						let max = data.reduce((num1, num2) => {
+							return num1 > +num2.value ? num1 : +num2.value
+						},0);
+						max = Math.ceil(max/10)*10;
+						mapOption = {
+							tooltip: {
+								triggerOn:'click',
+								formatter: function(params,ticket,callback) {
+									return params.seriesName+'<br />'+params.name+'：'+params.value
+								}
+							},
+							visualMap:{
+								min: 0,
+								max: max,
+								left:'left',
+								top:'top',
+								bottom:'bottom',
+								right:'right',
+								itemGap:5,
+								left: 'left',
+								top: 'bottom',
+								inRange: {
+									color: ["#e4f8ff", "#8843f4"],
+								},
+								type:'piecewise',
+								borderWidth:1,
+								splitNumber:'4',
+								show: true
+							},
+							geo: {
+								map: 'china',
+								zoom: 1.23,
+								roam:true,
+								scaleLimit:{
+									min:1,
+									max:3
+								},
+								// silent:true,
+								label: {
+									show: true,
+									fontSize: '6',
+									color: 'rgba(0,0,0,0.7)',
+									formatter: function(province) {
+										for(let i = 0;i<data.length; i++){
+											if(data[i].name === province.name){
+												return data[i].value+'';
+											}
+										}
+										return '0';
+									}
+								},
+								itemStyle: {
+									normal: {
+										borderColor: 'rgba(0, 0, 0, 0.2)'
+									},
+									emphasis:{
+										label:{
+											show:false
+										}
+									},
+									select: {
+										areaColor: '#F3B329',
+										shadowOffsetX: 0,
+										shadowOffsetY: 0,
+										shadowBlur: 20,
+										borderWidth: 0,
+										shadowColor: 'rgba(0, 0, 0, 0.5)',
+									}
+								}
+							},
+							series: {
+								name: '治疗人数',
+								type: 'map',
+								geoIndex: 0,
+								data: data
+							}
+						}
+						myChart.setOption(mapOption,true);
+						myChart.on('click', function(params) {
+							if(typeof uni != 'undefined'){
+								uni.postMessage({
+									data: params.data
+								});
+							}
+						});
+						myChart.on('mouseover', function(params) {
+							myChart.dispatchAction({
+							    type: 'downplay'
+							})
+						});
+						myChart.on('mousedown', function(params) {
+							myChart.dispatchAction({
+							    type: 'hideTip'
+							})
+						});	
+					}else{
+						console.log('获取地图信息出错,请稍后再试')
+					}
+				})
+			})
+		</script>
+    </body>
+</html>

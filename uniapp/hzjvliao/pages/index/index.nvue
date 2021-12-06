@@ -1,0 +1,264 @@
+<template>
+	<scroll-view class="container" :scroll-y="scrolly" show-scrollbar=false>
+		<view @touchstart="scrolly = false;" @touchend="scrolly = true;">
+			<web-view src="/static/echart.html" class="echarts" @onPostMessage="mapClick"></web-view>
+		</view>
+		<swiper class="swiper" circular indicator-dots v-show="videolist" indicator-color="rgba(255, 255, 255, 0.5)" indicator-active-color="#fff">
+			<swiper-item v-for="(video,i) in videolist" :key="i">
+				<video :src="video.path" :poster="video.poster" object-fit="contain" class="video" controls></video>
+			</swiper-item>
+		</swiper>
+		<scroll-view scroll-x class="avatarlist">
+			<button v-for="(data,i) in dataList" :key="i" @click="avatarClick(i)" :class="(i === (dataList.length-1))?['avatarCover','margin0']:'avatarCover'" plain>
+				<image :src="data.avatar" mode="aspectFit" class="avatar"></image>
+			</button>
+		</scroll-view>
+		<view v-if="data" class="dataCover">
+			<view>
+				<video :src="data.video" object-fit="contain" class="video" :poster="data.poster" controls></video>
+			</view>
+			<text class="title">患者信息</text>
+			<view class="table">
+				<view class="tableRowBox">
+					<text class="tableLabel">姓名</text>
+					<text class="tableLabel">性别</text>
+					<text class="tableLabel">病情</text>
+				</view>
+				<view class="tableRowBox">
+					<text class="tableValue">{{data.name}}</text>
+					<text class="tableValue">{{+data.sex?'男':'女'}}</text>
+					<text class="tableValue">{{degreeLevel[data.degree]}}</text>
+				</view>
+			</view>
+			<text class="title" v-show="data.photos">过往病历</text>
+			<swiper class="photoSwiper" circular indicator-dots v-show="data.photos" :style="{height:maxPhotosHeight}">
+				<swiper-item v-for="(photo,index) in photos" :key="photo" @click="imageClick(photo)">
+					<image :src="photo" mode="widthFix" class="photo" @load="getMaxPhotosHeight($event,index)"></image>
+				</swiper-item>
+			</swiper>
+			<text class="title">康复过程</text>
+			<text class="content">
+				{{data.content}}
+			</text>
+		</view>
+	</scroll-view>
+</template>
+
+<script>
+	import {apiUrl} from '../../config';
+	let maxPhotosHeight = 0,windowWidth = uni.getSystemInfoSync().windowWidth;
+	export default {
+		data() {
+			return {
+				mapOption:{},
+				videolist:null,
+				dataCache:{},
+				id:'',
+				avatarIndex:-1,
+				maxPhotosHeight:600,
+				degreeLevel:['轻微','中等','严重'],
+				scrolly:true
+			}
+		},
+		onReady() {
+			uni.request({
+				url:apiUrl.videolist,
+				success:({data:{error,data}}) => {
+					if(error === 0){
+						this.videolist = data;
+					}else{
+						uni.showToast({
+							icon:'none',
+							title: '获取视频出错,请稍后再试'
+						})
+					}
+				},
+				fail:(error) => uni.showToast({
+					icon:'none',
+					title: '获取视频出错,请稍后再试'
+				})
+			})
+		},
+		methods: {
+			getMaxPhotosHeight(event,i){
+				let {width,height} = event.detail;
+				height = ((windowWidth*690/750)/width)*height;
+				if(maxPhotosHeight<height){
+					maxPhotosHeight = height;
+				}
+				if(i === (this.photos.length-1)){
+					this.maxPhotosHeight = maxPhotosHeight;
+				}
+			},
+			mapClick:function(options){
+				let {id} = options.detail.data[0];
+				if(!Object.keys(this.dataCache).includes(id)){
+					uni.request({
+						url:apiUrl.applylist+'?province='+id,
+						success:({data:{error,data}}) => {
+							if(error === 0){
+								this.dataCache = {...this.dataCache,[id]:data};
+								this.clickAfter(id);
+							}else{
+								uni.showToast({
+									icon:'none',
+									title: '获取列表信息出错,请稍后再试'
+								})
+							}
+						},
+						fail:(error) => uni.showToast({
+							icon:'none',
+							title: '获取列表信息出错,请稍后再试'+error
+						})
+					})
+				}else{
+					this.clickAfter(id);
+				}
+			},
+			clickAfter:function(id){
+				this.id = id;
+				if(this.dataList.length>0){
+					this.avatarIndex = 0;
+					this.maxPhotosHeight = maxPhotosHeight = 0;
+				}else{
+					this.avatarIndex = -1;
+				}
+			},
+			avatarClick:function(index){
+				this.maxPhotosHeight = maxPhotosHeight = 0;
+				this.avatarIndex = index;
+			},
+			imageClick:function(url){
+				let photosUrl = this.photos;
+				let current = photosUrl.indexOf(url);
+				uni.previewImage({
+					urls: photosUrl,
+					current
+				});
+			},
+			apply:function(){
+				uni.navigateTo({
+				    url: '/pages/apply/apply'
+				});
+			},
+		},
+		computed: {
+			data(){
+			  return this.dataCache[this.id]?this.dataCache[this.id][this.avatarIndex]:null;
+			},
+			photos(){
+				return this.data.photos.split(',') || [];
+			},
+			dataList(){
+				return this.dataCache[this.id];
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.container {
+		background-color:#49b8fe;
+		flex:1;
+	}
+	.echarts {
+		width: 750rpx;
+		height: 500rpx;
+		padding:0 30rpx;
+		background-color:#d3f3fe;
+	}
+	.swiper{
+	    width:690rpx;
+	    height:390rpx;
+	    margin:40rpx 30rpx;
+	}
+    .video{
+        width: 690rpx;
+		height:390rpx;
+		border-radius:20rpx;
+		overflow:hidden;
+    }
+	.avatarlist{
+		width: 690rpx;
+		margin: 0 30rpx 30rpx 30rpx;
+		flex-direction: row;
+	}
+	.avatarCover{
+		border:0;
+		padding: 0;
+		margin-right:35rpx;
+	}
+	.margin0{
+		margin:0;
+	}
+	.avatar{
+		width: 110rpx;
+		height: 110rpx;
+		border-radius:55rpx;
+	}
+
+	.dataCover{
+		padding: 0 30rpx;
+	}
+	.title {
+		font-size:36rpx;
+		text-align:center;
+		margin:38rpx 0;
+		color:#fff;
+	}
+	.table{
+		background-color:#d3f3fe;
+		border-radius:20rpx;
+		padding-bottom:30rpx;
+	}
+	.tableRowBox{
+		flex-direction: row;
+	}
+	.tableLabel{
+		flex:1;
+		text-align:center;
+		color: #676e97;
+		margin:30rpx 0;
+	}
+	.tableValue{
+		flex:1;
+		text-align:center;
+		color: #1b6ab4;
+		font-size:36rpx;
+	}
+	.photoSwiper{
+	    width:690rpx;
+	}
+	.photo{
+		width:690rpx;
+		border-radius: 20rpx;
+	}
+	.content{
+		background-color:#d3f3fe;
+		border-radius:20rpx;
+		padding:10rpx 36rpx;
+		color: #1b6ab4;
+		font-size:30rpx;
+		line-height:50rpx;
+		margin-bottom:20rpx;
+	}
+	
+	.applyBtn {
+	    height:100rpx;
+		border:0;
+		margin:30rpx;
+		border-radius:50rpx;
+		overflow:hidden;
+	}
+	.applyImage{
+		position: absolute;
+		border-radius:50rpx;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.applyText {
+		color:#fff;
+	}
+</style>

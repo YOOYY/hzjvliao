@@ -1,0 +1,65 @@
+[2021-06-03 15:14:22]	[py]	[exception]	[2021-06-03 15:14:22:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:18:54]	[py]	[exception]	[2021-06-03 15:18:54:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:19:30]	[py]	[exception]	[2021-06-03 15:19:30:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:19:55]	[py]	[exception]	[2021-06-03 15:19:55:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:23:35]	[py]	[exception]	[2021-06-03 15:23:35:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:24:10]	[py]	[exception]	[2021-06-03 15:24:10:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:40:18]	[py]	[exception]	[2021-06-03 15:40:18:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 51	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->checkcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('checkcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:42:05]	[py]	[exception]	[2021-06-03 15:42:05:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:42:31]	[py]	[exception]	[2021-06-03 15:42:31:	null	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 33	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:45:45]	[py]	[exception]	[2021-06-03 15:45:45:	{"code":50006,"message":"invalid mobile"}	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 34	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:49:24]	[py]	[exception]	[2021-06-03 15:49:24:	{"code":50006,"message":"invalid mobile"}	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 32	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:49:29]	[py]	[exception]	[2021-06-03 15:49:29:	{"code":50006,"message":"invalid mobile"}	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 32	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->sendcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('sendcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR
+[2021-06-03 15:50:29]	[py]	[exception]	[2021-06-03 15:50:29:	{"code":50010,"message":"invalid code"}	D:\webservice\web\react\php\application\controllers\JiguangController.php on line 50	#0 D:\webservice\php\PEAR\Zend\Controller\Action.php(503): JiguangController->checkcodeAction()
+#1 D:\webservice\php\PEAR\Zend\Controller\Dispatcher\Standard.php(308): Zend_Controller_Action->dispatch('checkcodeAction')
+#2 D:\webservice\php\PEAR\Zend\Controller\Front.php(954): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#3 D:\webservice\web\react\php\htdocs\index.php(58): Zend_Controller_Front->dispatch()
+#4 {main}	]EOR

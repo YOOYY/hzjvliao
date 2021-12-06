@@ -1,0 +1,37 @@
+{
+  "name": "teaset-pro",
+  "version": "0.8.4",
+  "description": "A UI library for react native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:next": "npm publish --access public --tag next",
+    "release": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lzhd/teaset-pro.git"
+  },
+  "keywords": [
+    "teaset",
+    "react",
+    "native",
+    "UI",
+    "library",
+    "framework"
+  ],
+  "author": "rilyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lzhd/teaset-pro/issues"
+  },
+  "homepage": "https://github.com/lzhd/teaset-pro#readme",
+  "peerDependencies": {
+    "@react-navigation/native":">=5.0.0",
+    "react": ">=16.11.0",
+    "react-native": ">=0.62.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
+  }
+}
